@@ -1,17 +1,25 @@
 from sklearn.feature_extraction.text import TfidfTransformer
 
-def predict(model, count_vect, X_train_tfidf, y_train, X_test):
-    clf = model.fit(X_train_tfidf, y_train)
-    docs_new = X_test
+def predict_model_cv(clf, count_vect, x_test):
     tfidf_transformer = TfidfTransformer()
-    X_new_counts = count_vect.transform(docs_new)
-    X_new_tfidf = tfidf_transformer.fit_transform(X_new_counts)
-
-    predicted = clf.predict(X_new_tfidf)
-#     print('-----PREDICTION-----')
-#     for doc, category in zip(docs_new, predicted):
-#        print('%r => %s' % (doc, category))
+    x_test_counts = count_vect.transform(x_test)
+    x_test_tfidf = tfidf_transformer.fit_transform(x_test_counts)
+    # x_test_tfidf = tfidf_transformer.transform(x_test)
+    predicted = clf.predict(x_test_tfidf)
+    # print('-----PREDICTION-----')
+    # for doc, category in zip(x_test, predicted):
+    #    print('%r => %s' % (doc, category))
 
     return predicted
 
-predict()
+
+def predict_task(clf, x_test):#todo
+    tfidf_transformer = TfidfTransformer()
+
+    x_test_tfidf = tfidf_transformer.transform([x_test])
+    predicted = clf.predict(x_test_tfidf)
+    # print('-----PREDICTION-----')
+    # for doc, category in zip(x_test, predicted):
+    #    print('%r => %s' % (doc, category))
+
+    return predicted

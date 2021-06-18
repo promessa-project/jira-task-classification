@@ -22,13 +22,13 @@ def encode_data(df):
 
 def get_count_vectorizer_matrix(proj_train):
     count_vect = CountVectorizer(binary=True)
-    X_train_counts = count_vect.fit_transform(proj_train)
+    x_train_counts = count_vect.fit_transform(proj_train)
 
-    return X_train_counts, count_vect
+    return x_train_counts, count_vect
 
 
-def get_tfidf_matrix(X_train_counts):
+def get_tfidf_matrix(x_train_counts):
     tfidf_transformer = TfidfTransformer()
-    X_train_tfidf = tfidf_transformer.fit_transform(X_train_counts)
+    x_train_tfidf = tfidf_transformer.fit_transform(x_train_counts)
 
-    return X_train_tfidf
+    return x_train_tfidf
