@@ -16,8 +16,14 @@ def predict_model_cv(clf, count_vect, x_test):
     return predicted
 
 
-def predict_task(model_name, x_test):#todo
-    clf = joblib.load('models/'+model_name+'.joblib')
+def predict_task(data):
+    summary = data['summary']
+    task = data['task']
+
+    print('task::', task)
+    print('instance for prediction::', summary)
+
+    clf = joblib.load('models/SGDClassifier.joblib')
     count_vect = joblib.load('models/feature/CountVectorizer.joblib')
 
     tfidf_transformer = TfidfTransformer()
@@ -27,4 +33,8 @@ def predict_task(model_name, x_test):#todo
 
     print('predicted value::', predicted)
 
-    return predicted
+    return {
+        'task': data['task'],
+        'epic': predicted,
+        'summary': data['summary']
+    }
