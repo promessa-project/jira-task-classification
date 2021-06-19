@@ -7,8 +7,9 @@ from bs4 import BeautifulSoup
 import spacy
 import unidecode
 from word2number import w2n
-import contractions
 import pymysql
+import warnings
+warnings.filterwarnings('ignore')
 
 nlp = spacy.load('en_core_web_sm')
 
@@ -36,14 +37,7 @@ def remove_accented_chars(text):
     text = unidecode.unidecode(text)
     return text
 
-
-def expand_contractions(text):
-    """expand shortened words, e.g. don't to do not"""
-    text = contractions.fix(text)
-    return text
-
-def text_preprocessing(text, accented_chars=True, contractions=True,
-                       convert_num=True, extra_whitespace=True,
+def text_preprocessing(text, accented_chars=True, convert_num=True, extra_whitespace=True,
                        lemmatization=True, lowercase=True, punctuations=True,
                        remove_html=True, remove_num=True, special_chars=True,
                        stop_words=True):
@@ -54,8 +48,6 @@ def text_preprocessing(text, accented_chars=True, contractions=True,
         text = remove_whitespace(text)
     if accented_chars == True: #remove accented characters
         text = remove_accented_chars(text)
-    if contractions == True: #expand contractions
-        text = expand_contractions(text)
     if lowercase == True: #convert all characters to lowercase
         text = text.lower()
 
