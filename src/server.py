@@ -9,12 +9,8 @@ app.config['JSON_SORT_KEYS'] = False # keep JSON in the order in which it is wri
 
 CORS(app)
 
-@app.route('/docs', methods=['GET'])
-def docs():
-    return render_template('index.html')
-
 @app.route('/predict-task', methods=['POST'])
-def newproject():
+def predict_task():
     pred_result = model.predict_task(request.json)
 
     return jsonify(pred_result)

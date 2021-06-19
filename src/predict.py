@@ -5,6 +5,9 @@ import models.predict_model as model
 
 if __name__ == '__main__':
     text_input = 'prepare for interview'
-    text_processed = preprocess.text_preprocessing(text_input)
+    data = {}
+    data['task'] ='EXSCHOEN-1'
+    data['summary'] = preprocess.text_preprocessing(text_input)
 
-    model.predict_task('SGDClassifier', [text_processed]) #todo
+    predicted = model.predict_task(data)
+
