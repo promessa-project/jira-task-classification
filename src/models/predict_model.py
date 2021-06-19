@@ -1,5 +1,8 @@
 from sklearn.feature_extraction.text import TfidfTransformer
 
+import numpy as np
+import joblib
+
 def predict_model_cv(clf, count_vect, x_test):
     tfidf_transformer = TfidfTransformer()
     x_test_counts = count_vect.transform(x_test)
@@ -13,13 +16,15 @@ def predict_model_cv(clf, count_vect, x_test):
     return predicted
 
 
-def predict_task(clf, x_test):#todo
-    tfidf_transformer = TfidfTransformer()
+def predict_task(model_name, x_test):#todo
+    clf = joblib.load('models/'+model_name+'.joblib')
+    count_vect = joblib.load('models/feature/CountVectorizer.joblib')
 
-    x_test_tfidf = tfidf_transformer.transform([x_test])
-    predicted = clf.predict(x_test_tfidf)
-    # print('-----PREDICTION-----')
-    # for doc, category in zip(x_test, predicted):
-    #    print('%r => %s' % (doc, category))
+    tfidf_transformer = TfidfTransformer()
+    x_test_tfidf = tfidf_transformer.fit_transform(count_vect)
+
+    predicted = clf.predict(x_test_tfidf)[0]
+
+    print('predicted value::', predicted)
 
     return predicted

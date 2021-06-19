@@ -1,6 +1,10 @@
 #!/usr/bin/python
 
+import data.make_dataset as preprocess
 import models.predict_model as model
 
 if __name__ == '__main__':
-    model.predict_task() #todo
+    text_input = 'prepare for interview'
+    text_processed = preprocess.text_preprocessing(text_input)
+
+    model.predict_task('SGDClassifier', [text_processed]) #todo
