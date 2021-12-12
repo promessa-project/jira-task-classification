@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="jira-task-classification",
+    name="jira_task_classification",
     version="0.0.1",
     author="Shivathanu Gopirajan Chitra",
     author_email="gcshivathanu@gmail.com",
