@@ -23,8 +23,9 @@ def predict_task(data):
     print('task::', task)
     print('instance for prediction::', summary)
 
-    clf = joblib.load('artefacts/models/SGDClassifier.joblib')
-    count_vect = joblib.load('artefacts/models/feature/CountVectorizer.joblib')
+    clf = joblib.load('./storage/jira_classifier_sgdclassifier.joblib')
+    count_vect = joblib.load(
+        './storage/jira_classifier_countvectorizer.joblib')
 
     tfidf_transformer = TfidfTransformer()
     x_test_tfidf = tfidf_transformer.fit_transform(count_vect)
