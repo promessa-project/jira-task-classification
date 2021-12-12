@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import data.make_dataset as preprocess
-import models.predict_model as model
+import jira_task_classification.models.predict_model as model
 
 if __name__ == '__main__':
     text_input = 'prepare for interview'

@@ -23,8 +23,8 @@ def predict_task(data):
     print('task::', task)
     print('instance for prediction::', summary)
 
-    clf = joblib.load('models/SGDClassifier.joblib')
-    count_vect = joblib.load('models/feature/CountVectorizer.joblib')
+    clf = joblib.load('artefacts/models/SGDClassifier.joblib')
+    count_vect = joblib.load('artefacts/models/feature/CountVectorizer.joblib')
 
     tfidf_transformer = TfidfTransformer()
     x_test_tfidf = tfidf_transformer.fit_transform(count_vect)

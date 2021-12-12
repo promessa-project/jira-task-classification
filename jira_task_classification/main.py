@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import models.train_model as model
+import jira_task_classification.models.train_model as model
 import server
 
 if __name__ == '__main__':

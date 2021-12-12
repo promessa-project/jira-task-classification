@@ -63,8 +63,9 @@ model_recall_scores = []
 model_weighted_accuracy_scores = []
 
 def evaluate_model():
-    print(os.path.join(os.getcwd(), 'data/processed/jira_data.csv'))
-    df = pd.read_csv(os.path.join(os.getcwd(), 'data/processed/jira_data.csv'))
+    print(os.path.join(os.getcwd(), 'artefacts/data/processed/jira_data.csv'))
+    df = pd.read_csv(os.path.join(
+        os.getcwd(), 'artefacts/data/processed/jira_data.csv'))
 
     # factorize the category (epic) for labels to improve the performance of classifiers
     df_encode = feature.encode_data(df)
